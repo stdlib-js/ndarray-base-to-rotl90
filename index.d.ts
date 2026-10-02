@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,23 +16,18 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var emptyLike = require( '@stdlib/ndarray-base-empty-like' );
-var rotl90 = require( '@stdlib/ndarray-base-rotl90' );
-var assign = require( '@stdlib/ndarray-base-assign' );
-
-
-// MAIN //
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
 * Returns a new ndarray where a matrix (or a stack of matrices) is rotated 90 degrees counterclockwise.
 *
-* @param {ndarray} x - input array
-* @param {integer} k - number of times to rotate by 90 degrees
-* @returns {ndarray} output array
+* @param x - input array
+* @param k - number of times to rotate by 90 degrees
+* @returns output array
 *
 * @example
 * var array = require( '@stdlib/ndarray-array' );
@@ -43,23 +38,9 @@ var assign = require( '@stdlib/ndarray-base-assign' );
 * var y = toRotl90( x, 1 );
 * // returns <ndarray>[ [ 2, 4 ], [ 1, 3 ] ]
 */
-function toRotl90( x, k ) {
-	var out;
-	var xr;
-
-	// Create a rotated view of the input ndarray:
-	xr = rotl90( x, k, false );
-
-	// Create an output ndarray having the same shape and data type as the rotated view:
-	out = emptyLike( xr );
-
-	// Assign the elements of the rotated view to the output ndarray:
-	assign( [ xr, out ] );
-
-	return out;
-}
+declare function toRotl90<T = unknown, U extends typedndarray<T> = typedndarray<T>>( x: U, k: number ): U;
 
 
 // EXPORTS //
 
-module.exports = toRotl90;
+export = toRotl90;
